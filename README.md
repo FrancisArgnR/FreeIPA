@@ -2,11 +2,25 @@
 
 *under construction*
 
-Table of Contents
-=================
+## Table of Contents
+====================
 
 * [Introduction](#introduction)
 * [Core technology](#core-technology)
+  * [389 Directory Server](#389-directory-server)
+  * [Kerberos KDC](#kerberos-kdc)
+  * [NTP server](#ntp-server)
+  * [Dogtag certificate system](#dogtag-certificate-system)
+  * [PKI](#pki)
+  * [SSSD](#sssd)
+  * [Web UI](#web-ui)
+  * [DNS](#dns)
+* [Installation](#installation)
+  * [Recommendations for deployment](#recommendations-for-deployment)
+  * [Installing the FreeIPA server](#installing-the-freeIPA-server)
+  * [Installing the FreeIPA client](#installing-the-freeIPA-client)
+* [Functionalities](#functionalities)
+* [References](#references)
 
 ## Introduction
 
