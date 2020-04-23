@@ -28,11 +28,13 @@ FreeIPA (Identity, Policy and Audit) is an integrated security management soluti
 
 The possibilities that Freeipa can offer are defined by the following 3 features:  
 
-| Identidad | Política de acceso | Confianza |
+| Identity | Access policy  | Trust |
 | ------------- | ------------- | ------------- |
-| Administra usuarios de Linux y hosts clientes en un realm (ámbito) desde un host central mediante CLI, Web UI o acceso RPC. Habilita autenticación de inicio de sesión único para todos sus sistemas, servicios y aplicaciones. | Define las políticas de autenticación y autorización de Kerberos para sus identidades. Controla servicios como DNS, SUDO, SELinux o autofs.  | 	Crear confianza mutua con otros sistemas de gestión de identidades como Microsoft Active Directory |
+| Manage Linux users and client hosts in a realm from a central host via CLI, Web UI or RPC access. Enables single sign-on authentication for all your systems, services and applications | Defines the Kerberos authentication and authorization policies for your identities. Control services such as DNS, SUDO, SELinux, or autofs | Create mutual trust with other identity management systems such as Microsoft Active Directory |
 
+FreeIPA is built on open source components and well known standard protocols. It is focused on easy use and automation of installation and configuration tasks.  Security aspects related to access control, or administration tasks can be fully centralized and managed through the web interface (Web UI) or the command line tool ipa (CLI). In addition, it allows you to easily configure multiple servers in a FreeIPA domain to provide redundancy and scalability. 
 
+From a time perspective, FreeIPA releases are linked to the Fedora release program, with the current version being the 4th (4.7).
 
 ## Core technology
 
