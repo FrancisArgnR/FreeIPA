@@ -2,6 +2,12 @@
 
 *under construction*
 
+Table of Contents
+=================
+
+* [Introduction](#introduction)
+* [Core technology](#core-technology)
+
 ## Introduction
 
 ## Core technology
