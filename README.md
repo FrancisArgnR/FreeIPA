@@ -24,6 +24,16 @@
 
 ## Introduction
 
+FreeIPA (Identity, Policy and Audit) is an integrated security management solution (Identity and Authentication) for Linux/UNIX network environments. A FreeIPA server provides centralized authentication, authorization, and account information by storing data about the user, groups, hosts, and other objects needed to manage the security aspects of a computer network. 
+
+The possibilities that Freeipa can offer are defined by the following 3 features:  
+
+| Identidad | Política de acceso | Confianza |
+| ------------- | ------------- | ------------- |
+| Administra usuarios de Linux y hosts clientes en un realm (ámbito) desde un host central mediante CLI, Web UI o acceso RPC. Habilita autenticación de inicio de sesión único para todos sus sistemas, servicios y aplicaciones. | Define las políticas de autenticación y autorización de Kerberos para sus identidades. Controla servicios como DNS, SUDO, SELinux o autofs.  | 	Crear confianza mutua con otros sistemas de gestión de identidades como Microsoft Active Directory |
+
+
+
 ## Core technology
 
 ### 389 Directory Server
