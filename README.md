@@ -2,6 +2,8 @@
 
 *under construction*
 
+![FreeIPAlogo](https://blog.ichasco.com/wp-content/uploads/2017/01/freeipalogo.png)
+
 ### Table of Contents
 ====================
 
