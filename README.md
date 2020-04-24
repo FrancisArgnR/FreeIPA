@@ -100,6 +100,12 @@ The Web UI's URL access point is https://test.example.com/ipa/ui/ where test.exa
 
 ## FreeIPA update
 
+When there is a new updated version of the FreeIPA server to which you want to upgrade, in most cases it is possible to simply upgrade the underlying operating system and FreeIPA software. The FreeIPA upgrade procedure is designed to upgrade the FreeIPA Directory Server instance and also other configured services when needed and does not need to be shut down beforehand. To upgrade an existing installation of FreeIPA (from version 3.3.0 onwards) run the following command:
+
+_# yum update freeipa-server_
+
+It is important to make sure before you start that you have enough redundancy in your FreeIPA deployment (at least 2 working mirrors). If the upgrade procedure fails in any way, another FreeIPA server can maintain functionality until the upgrade process is successfully completed.
+
 ## Migration
 
 ## Troubleshooting
