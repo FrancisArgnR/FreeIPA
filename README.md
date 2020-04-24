@@ -53,7 +53,17 @@ The FreeIPA directory server acts as a back-end where FreeIPA stores all data fo
 - Data storage. All FreeIPA identities, policies, configurations or certificates are stored on the Directory Server.  FreeIPA objects are stored in a suffix calculated from the realm name (e.g. dc=example, dc=com for an EXAMPLE.COM realm), certificates are stored in a second suffix, o=ipaca. Access to the different parts of the Directory Server tree is protected by the ACI configuration of the DS.
 
 ### Kerberos KDC
+
+Kerberos is an authentication protocol created by MIT that uses symmetric key cryptography to validate users with network services (thus avoiding having to send passwords over the network). Kerberos requires a trusted third party (Key Distribution Center, or KDC) consisting of an Authentication Server (AS) and a Ticket Granting Server (TGS) to authenticate users. 
+
+Kerberos is a cornerstone of a FreeIPA server as it provides authentication services for the entire FreeIPA environment. Just as a Kerberos KDC server reads all user identity information from the Directory Server, FreeIPA implements its own ipa-kdb KDC which reads and writes all required information to the LDAP tree.
+
+Within Kerberos terminology, it is important to note the term __realm__, which refers to a network used by Kerberos, composed of one or more KDCs and a potentially large number of clients.
+
 ### NTP server
+
+The Kerberos protocol is very sensitive to the correct timing between the KDC and the authentication nodes. With time differences of more than several minutes, authentication will not work. For this reason, the server installers set up an NTP server (ntpd at the moment) on each FreeIPA server. 
+
 ### Dogtag certificate system
 ### PKI
 ### SSSD
