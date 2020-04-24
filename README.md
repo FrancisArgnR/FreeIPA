@@ -101,6 +101,16 @@ The DNS component of FreeIPA was designed and built on several basic assumptions
 ## Installation
 
 ### Recommendations for deployment
+
+Before deploying FreeIPA it would be convenient to make decisions about the following elements, as it would be very complicated to make some modifications later:
+
+- DNS. Independently of whether the integrated service is used in FreeIPA or not, they play an important role in the identity management functionality, especially in Kerberos, and therefore it is necessary to take into account that: As for the domain, the FreeIPA server must always have its own primary domain (e.g. example.com or ipa.example.com). This domain must not be shared with another Kerberos-based identity management system, otherwise collisions will occur. Client hosts do not need to be in the same domain as the servers. For example, the FreeIPA server can have a domain ipa.example.com and the clients have a domain clients.example.com, there just has to be a clear mapping between the DNS domain and the Kerberos realm.
+- Name of the Kerberos realm. When the first FreeIPA server is installed, a Kerberos realm name is always defined for the installation. To properly select the realm name, you must take into account: a) The realm name must not conflict with any other existing Kerberos realm name (for example, the name used by Active Directory), b) The Kerberos realm name must be the uppercase version (EXAMPLE. COM) of the primary DNS domain name (example.com), c) FreeIPA clients from multiple different DNS domains (example.com, example.net, example.org) can join a single Kerberos realm (EXAMPLE.COM), d) A FreeIPA installation always represents a single Kerberos realm.
+- It is recommended that you avoid deploying other applications or services on the FreeIPA server. This is for reasons of performance, stability, and ease of migrating the server from FreeIPA.
+- FreeIPA runs in a multi-master replicated environment. Generally whenever possible it is recommended to have at least 2-3 mirrors in each data center to obtain adequate load balancing and redundancy (these additional servers are mirrors of the initial master server).
+- Each client installation using _ipa-client-install_ requires access to port 443 (HTTPS) on the FreeIPA server. This is because once enrolled, the client uploads its own SSH keys and performs a few more operations. The IPA CLI also uses the same port to communicate with the server. Therefore, access to HTTPS (443) from the client side is required.
+
+
 ### Installing the FreeIPA server
 ### Installing the FreeIPA client
 
