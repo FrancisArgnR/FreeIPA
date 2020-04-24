@@ -65,8 +65,18 @@ Within Kerberos terminology, it is important to note the term __realm__, which r
 The Kerberos protocol is very sensitive to the correct timing between the KDC and the authentication nodes. With time differences of more than several minutes, authentication will not work. For this reason, the server installers set up an NTP server (ntpd at the moment) on each FreeIPA server. 
 
 ### Dogtag certificate system
+
+The Dogtag Certificate System is an open source Certificate Authority (CA) that supports all aspects of certificate life cycle management. FreeIPA includes an integrated Certificate Authority based on the Dogtag project which increases the authentication capabilities.
+
 ### PKI
+
+The Dogtag project provides FreeIPA with the integrated PKI service. PKI signs and publishes certificates for FreeIPA's services and hosts, it also takes care of the renewal since these have a limited validity. For this purpose, the Certmonger daemon runs on all clients and manages the renewal for the services that use it.
+
 ### SSSD
+
+System Security Services Daemon (SSSD) is a service that aims to provide a single interface for NSS and PAM, from which to manage remote access to LDAP directories and multiple authentication mechanisms from a single point. 
+SSSD is a client-side component that integrates FreeIPA as an authentication and identity provider to multiple different hosts. In addition, additional client-side management functionality such as SUDO, HBAC policies, etc. can be achieved through SSSD. The SSSD is configured by default in FreeIPA.
+
 ### Web UI
 ### DNS
 
