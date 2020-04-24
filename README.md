@@ -91,6 +91,13 @@ The Web UI's URL access point is https://test.example.com/ipa/ui/ where test.exa
 
 ### DNS
 
+The FreeIPA integrated DNS service allows the administrator to manage and serve the DNS records in a domain. Once the client registers with the domain, it uses the DNS to locate the servers and services within the domain. The DNS component in FreeIPA is optional and the user can choose to manage all DNS records manually or through another DNS server. The DNS integration is based on the bind-dyndb-ldap project, which enhances the BIND name server to be able to use the LDAP instance of the FreeIPA server as a data backend (data is stored in the cn=dns entry, using the schema defined by bind-dyndb-ldap).
+
+The DNS component of FreeIPA was designed and built on several basic assumptions and objectives that should always be considered:
+
+- Assumptions: The DNS is difficult to handle and many administrators who want to deploy FreeIPA would have difficulty configuring the DNS correctly.  DNS is critical to having a decent experience with Kerberos. Single-master DNS is prone to errors, especially for inexperienced administrators.
+- Objectives: To provide an integrated DNS server that can be used to facilitate FreeIPA deployment. To provide the ability to stop and remove mirrors without worrying about the special "master" DNS server. Provide an alternative option for users with existing DNS infrastructure: Provide a means to integrate FreeIPA with the existing DNS infrastructure. The goal is NOT to provide a general purpose DNS server. Features that go beyond facilitating the deployment and maintenance of FreeIPA are explicitly out of reach.
+
 ## Installation
 
 ### Recommendations for deployment
