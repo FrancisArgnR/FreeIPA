@@ -20,6 +20,8 @@
   * [Installing the FreeIPA server](#installing-the-freeIPA-server)
   * [Installing the FreeIPA client](#installing-the-freeIPA-client)
 * [Functionalities](#functionalities)
+* [FreeIPA update](#freeipa-update)
+* [Migration](#migration)
 * [Troubleshooting](#troubleshooting)
 * [References](#references)
 
@@ -79,6 +81,13 @@ System Security Services Daemon (SSSD) is a service that aims to provide a singl
 SSSD is a client-side component that integrates FreeIPA as an authentication and identity provider to multiple different hosts. In addition, additional client-side management functionality such as SUDO, HBAC policies, etc. can be achieved through SSSD. The SSSD is configured by default in FreeIPA.
 
 ### Web UI
+
+Web UI is a web application for the administration of FreeIPA. It uses the JSON-RPC interface to access the FreeIPA API. This ensures that available data or changes that can be made are limited to the security context of the LDAP object (user) that is assigned to an active session.
+
+It has virtually the same capabilities as the command line (CLI), so you can freely choose between the two for administration purposes. Web UI has two modes of operation, a limited mode for user use, and a full mode for administration.
+
+The Web UI's URL access point is https://test.example.com/ipa/ui/ where test.example.com is the name of the FreeIPA server.
+
 ### DNS
 
 ## Installation
@@ -88,6 +97,10 @@ SSSD is a client-side component that integrates FreeIPA as an authentication and
 ### Installing the FreeIPA client
 
 ## Functionalities
+
+## FreeIPA update
+
+## Migration
 
 ## Troubleshooting
 
