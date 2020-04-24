@@ -20,6 +20,7 @@
   * [Installing the FreeIPA server](#installing-the-freeIPA-server)
   * [Installing the FreeIPA client](#installing-the-freeIPA-client)
 * [Functionalities](#functionalities)
+* [Troubleshooting](#troubleshooting)
 * [References](#references)
 
 ====================
@@ -87,6 +88,8 @@ SSSD is a client-side component that integrates FreeIPA as an authentication and
 ### Installing the FreeIPA client
 
 ## Functionalities
+
+## Troubleshooting
 
 ## References
 
