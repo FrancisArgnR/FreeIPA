@@ -2,7 +2,7 @@
 
 *under construction*
 
-## Table of Contents
+### Table of Contents
 ====================
 
 * [Introduction](#introduction)
@@ -22,6 +22,8 @@
 * [Functionalities](#functionalities)
 * [References](#references)
 
+====================
+
 ## Introduction
 
 FreeIPA (Identity, Policy and Audit) is an integrated security management solution (Identity and Authentication) for Linux/UNIX network environments. A FreeIPA server provides centralized authentication, authorization, and account information by storing data about the user, groups, hosts, and other objects needed to manage the security aspects of a computer network. 
@@ -38,7 +40,18 @@ From a time perspective, FreeIPA releases are linked to the Fedora release progr
 
 ## Core technology
 
+The operation of FreeIPA is possible thanks to the integration and combination of different technologies such as Linux (Fedora), 389 Directory Server, MIT Kerberos, NTP, DNS, Web and command line provisioning and administration tools, Dogtag (certificate system), Active Directory Integration or SSSD among others.
+
 ### 389 Directory Server
+
+The 389 Directory Server ( previously Fedora Directory Server) is an LDAP server that in FreeIPA serves as the foundation for the entire identity management solution. 
+
+LDAP (Lightweight Directory Access Protocol) is a set of open source protocols used to access centralized remote directory services on a network. LDAP is based on the connection between client and server. Directory data is stored on the LDAP server. These directories are typically used to contain stored user information.
+
+The FreeIPA directory server acts as a back-end where FreeIPA stores all data for all identity, authentication (Kerberos) and authorization services and other policies. This technology allows FreeIPA to also provide a multi-master environment, where the administrator can deploy several FreeIPA mirrors. The name "389" is derived from the port number used by the LDAP.  
+
+- Data storage. All FreeIPA identities, policies, configurations or certificates are stored on the Directory Server.  FreeIPA objects are stored in a suffix calculated from the realm name (e.g. dc=example, dc=com for an EXAMPLE.COM realm), certificates are stored in a second suffix, o=ipaca. Access to the different parts of the Directory Server tree is protected by the ACI configuration of the DS.
+
 ### Kerberos KDC
 ### NTP server
 ### Dogtag certificate system
@@ -74,6 +87,7 @@ https://linuxconfig.org/how-to-install-and-configure-freeipa-on-red-hat-linux <b
 https://www.server-world.info/en/note?os=Fedora_31&p=freeipa&f=1 <br>
 https://computingforgeeks.com/install-and-configure-freeipa-server-on-ubuntu/ <br>
 https://computingforgeeks.com/install-freeipa-server-centos-7/ <br>
+https://www.server-world.info/en/note?os=Fedora_31&p=freeipa&f=3 <br>
 
 #### Other FreeIPA functionalities
 
