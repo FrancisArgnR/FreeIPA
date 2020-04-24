@@ -21,6 +21,7 @@
   * [Installing the FreeIPA client](#installing-the-freeIPA-client)
 * [Functionalities](#functionalities)
 * [FreeIPA update](#freeipa-update)
+* [Replication](#replication)
 * [Migration](#migration)
 * [Troubleshooting](#troubleshooting)
 * [References](#references)
@@ -105,6 +106,8 @@ When there is a new updated version of the FreeIPA server to which you want to u
 _# yum update freeipa-server_
 
 It is important to make sure before you start that you have enough redundancy in your FreeIPA deployment (at least 2 working mirrors). If the upgrade procedure fails in any way, another FreeIPA server can maintain functionality until the upgrade process is successfully completed.
+
+## Replication
 
 ## Migration
 
