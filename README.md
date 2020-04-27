@@ -141,6 +141,31 @@ _# yum update freeipa-server_
 
 It is important to make sure before you start that you have enough redundancy in your FreeIPA deployment (at least 2 working mirrors). If the upgrade procedure fails in any way, another FreeIPA server can maintain functionality until the upgrade process is successfully completed.
 
+The host is added to the list of hosts in FQDN format so that it is resolvable (with the condition that it must be the first one)( in case you don't choose the DNS service):
+
+_# vim '192.168.3.3 ipa.example.com ipa' >> /etc/hosts _
+
+The next step is to open the server ports. The ports that FreeIPA uses have to be opened so that remote clients or additional masters can connect to them. Fedora comes with predefined service rules for FreeIPA that open Kerberos, HTTP, HTTPS, DNS, NTP, and LDAP (TCP ports: 80, 88, 389, 464 and UDP: 88, 123, 464).
+
+_# firewall-cmd --add-service=freeipa-ldap --add-service=freeipa-ldaps --permanent_
+
+Once all these prerequisites are ready, we proceed to install FreeIPA (as root):
+
+_# dnf -y install freeipa-server_
+
+The previous command installs all the necessary packages and dependencies (389-ds, krb5, ...), but does not configure FreeIPA, to proceed with the configuration process, you must run the following command (as root):
+
+_# ipa-server-install_
+
+The command will first gather all the necessary information, for that the installer will ask for the parameters (server name, domain and realm) and for the services, later it will configure them (it will also ask for the integrated DNS service, but in this case we will press the "enter" key to skip the process). It will also ask for the passwords to be assigned to the super-users. This command can take all these parameters in the same call (see man _ipa-server-install for details_), of which the most important are:
+
+--realm=REALM_NAME
+--domain=DOMAIN_NAME
+--admin-password=ADMIN_PASSWORD
+--mkhomedir
+--hostname=HOST_NAME
+
+
 ## Replication
 
 ## Migration
