@@ -129,18 +129,6 @@ To solve all this, establish and check that the host name is in FQDN (fully qual
 _# hostnamectl set-hostname ipa.example.com_ <br>
 _# hostname -f_
 
-### Installing the FreeIPA client
-
-## Functionalities
-
-## FreeIPA update
-
-When there is a new updated version of the FreeIPA server to which you want to upgrade, in most cases it is possible to simply upgrade the underlying operating system and FreeIPA software. The FreeIPA upgrade procedure is designed to upgrade the FreeIPA Directory Server instance and also other configured services when needed and does not need to be shut down beforehand. To upgrade an existing installation of FreeIPA (from version 3.3.0 onwards) run the following command:
-
-_# yum update freeipa-server_
-
-It is important to make sure before you start that you have enough redundancy in your FreeIPA deployment (at least 2 working mirrors). If the upgrade procedure fails in any way, another FreeIPA server can maintain functionality until the upgrade process is successfully completed.
-
 The host is added to the list of hosts in FQDN format so that it is resolvable (with the condition that it must be the first one)( in case you don't choose the DNS service):
 
 _# vim '192.168.3.3 ipa.example.com ipa' >> /etc/hosts _
@@ -159,11 +147,23 @@ _# ipa-server-install_
 
 The command will first gather all the necessary information, for that the installer will ask for the parameters (server name, domain and realm) and for the services, later it will configure them (it will also ask for the integrated DNS service, but in this case we will press the "enter" key to skip the process). It will also ask for the passwords to be assigned to the super-users. This command can take all these parameters in the same call (see man _ipa-server-install for details_), of which the most important are:
 
---realm=REALM_NAME
---domain=DOMAIN_NAME
---admin-password=ADMIN_PASSWORD
---mkhomedir
---hostname=HOST_NAME
+--realm=REALM_NAME <br>
+--domain=DOMAIN_NAME <br>
+--admin-password=ADMIN_PASSWORD <br>
+--mkhomedir <br>
+--hostname=HOST_NAME <br>
+
+### Installing the FreeIPA client
+
+## Functionalities
+
+## FreeIPA update
+
+When there is a new updated version of the FreeIPA server to which you want to upgrade, in most cases it is possible to simply upgrade the underlying operating system and FreeIPA software. The FreeIPA upgrade procedure is designed to upgrade the FreeIPA Directory Server instance and also other configured services when needed and does not need to be shut down beforehand. To upgrade an existing installation of FreeIPA (from version 3.3.0 onwards) run the following command:
+
+_# yum update freeipa-server_
+
+It is important to make sure before you start that you have enough redundancy in your FreeIPA deployment (at least 2 working mirrors). If the upgrade procedure fails in any way, another FreeIPA server can maintain functionality until the upgrade process is successfully completed.
 
 
 ## Replication
