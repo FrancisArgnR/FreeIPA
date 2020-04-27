@@ -131,7 +131,7 @@ _# hostname -f_
 
 The host is added to the list of hosts in FQDN format so that it is resolvable (with the condition that it must be the first one)( in case you don't choose the DNS service):
 
-_# vim '192.168.3.3 ipa.example.com ipa' >> /etc/hosts _
+_# vim '192.168.3.3 ipa.example.com ipa' >> /etc/hosts_
 
 The next step is to open the server ports. The ports that FreeIPA uses have to be opened so that remote clients or additional masters can connect to them. Fedora comes with predefined service rules for FreeIPA that open Kerberos, HTTP, HTTPS, DNS, NTP, and LDAP (TCP ports: 80, 88, 389, 464 and UDP: 88, 123, 464).
 
@@ -152,6 +152,22 @@ The command will first gather all the necessary information, for that the instal
 --admin-password=ADMIN_PASSWORD <br>
 --mkhomedir <br>
 --hostname=HOST_NAME <br>
+
+The output of the installer is quite long, you can see how all the components are configured, restarted and checked. At the end of the output, there are some steps needed to complete the functionality (but not for the installation process itself) (we have already carried out e.g. opening the ports). 
+
+Finally, the creation of the home directory is enabled with the first user login:
+
+_# authconfig --enablemkhomedir --update_
+
+To uninstall the FreeIPA server, run the following command:
+
+_# ipa-server-install --uninstall_
+
+But in case there are several replicated servers, you must first execute this command on the others to leave them out of the topology:
+
+_# ipa server-del ipa.example.com_
+
+** This installation has been done in Fedora, but the steps to do it in Centos or Ubuntu are the same, in the references there are the FreeIPA installation manuals in both systems **
 
 ### Installing the FreeIPA client
 
