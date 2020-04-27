@@ -23,7 +23,7 @@
 * [FreeIPA update](#freeipa-update)
 * [Replication](#replication)
 * [Migration](#migration)
-* [Back-up & Restore](#back-up-&-restore)
+* [Back-up & Restore](#back--up-&-restore)
 * [Troubleshooting](#troubleshooting)
 * [References](#references)
 
