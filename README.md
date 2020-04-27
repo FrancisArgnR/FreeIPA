@@ -59,7 +59,7 @@ LDAP (Lightweight Directory Access Protocol) is a set of open source protocols u
 
 The FreeIPA directory server acts as a back-end where FreeIPA stores all data for all identity, authentication (Kerberos) and authorization services and other policies. This technology allows FreeIPA to also provide a multi-master environment, where the administrator can deploy several FreeIPA mirrors. The name "389" is derived from the port number used by the LDAP.  
 
-- Data storage. All FreeIPA identities, policies, configurations or certificates are stored on the Directory Server.  FreeIPA objects are stored in a suffix calculated from the realm name (e.g. dc=example, dc=com for an EXAMPLE.COM realm), certificates are stored in a second suffix, o=ipaca. Access to the different parts of the Directory Server tree is protected by the ACI configuration of the DS.
+- Data storage. All FreeIPA identities, users, groups, policies, configurations or certificates are stored on the Directory Server.  All this FreeIPA data is stored with suffixes. There are two types of suffixes; a) Domain Suffix: contains all data related to the domain, and is calculated from the realm name (realm) (e.g. dc=example, dc=com, for a realm EXAMPLE.COM). b) CA Suffix: stores the certificates for the components of the certificate system (o=ipaca). It is only present on servers with a certification authority (CA) installed.
 
 ### Kerberos KDC
 
