@@ -187,7 +187,7 @@ It is important to make sure before you start that you have enough redundancy in
 
 ## Migration
 
-## Back up & Restore
+## Back-up & Restore
 
 ## Troubleshooting
 
