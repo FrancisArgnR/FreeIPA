@@ -126,7 +126,7 @@ And in addition it is necessary to make sure that the prerequisites are met such
 
 To solve all this, establish and check that the host name is in FQDN (fully qualified domain name) format (a FQDN is a name that includes the computer name and the domain name associated with that computer):
 
-_# hostnamectl set-hostname ipa.example.com_
+_# hostnamectl set-hostname ipa.example.com_ <br>
 _# hostname -f_
 
 ### Installing the FreeIPA client
