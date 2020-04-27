@@ -23,6 +23,7 @@
 * [FreeIPA update](#freeipa-update)
 * [Replication](#replication)
 * [Migration](#migration)
+* [Back-up & Restore](#back-up-&-restore)
 * [Troubleshooting](#troubleshooting)
 * [References](#references)
 
@@ -185,6 +186,8 @@ It is important to make sure before you start that you have enough redundancy in
 ## Replication
 
 ## Migration
+
+## Back-up & Restore
 
 ## Troubleshooting
 
