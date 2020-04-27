@@ -93,7 +93,6 @@ It has virtually the same capabilities as the command line (CLI), so you can fre
 The Web UI's URL access point is https://test.example.com/ipa/ui/ where test.example.com is the name of the FreeIPA server.
 
 ![FreeIPAWebUI1](https://access.redhat.com/webassets/avalon/d/Red_Hat_Enterprise_Linux-7-Linux_Domain_Identity_Authentication_and_Policy_Guide-en-US/images/0b67bd0c53b2b26b1d9ce416280f1e83/web_ui_login_screen.png)
-![FreeIPAWebUI2](https://access.redhat.com/webassets/avalon/d/Red_Hat_Enterprise_Linux-7-Linux_Domain_Identity_Authentication_and_Policy_Guide-en-US/images/ec2aee525a75c147a1a9539a4a9280e5/ui-tabs.png)
 
 ### DNS
 
@@ -118,6 +117,18 @@ Before deploying FreeIPA it would be convenient to make decisions about the foll
 
 
 ### Installing the FreeIPA server
+
+First, before installing FreeIPA, it is recommended to upgrade the system packages:
+
+_# yum -y update_
+
+And in addition it is necessary to make sure that the prerequisites are met such as establishing a static hostname or satisfying certain aspects about the DNS (although in this example the DNS service integrated in FreeIPA is not configured)(to see how it's done, look in the references).  This is necessary because Kerberos authentication is based on a static hostname; if the hostname changes, the authentication may stop working. Therefore, the FreeIPA server should not use a dynamically configured hostname from a DHCP, but a static one configured in /etc/hostname. In addition, the FreeIPA installer is quite demanding with the DNS configuration, and will check that a) the hostname cannot be localhost or localhost6, b) the hostname must be fully qualified, c) the hostname must be resolvable.
+
+To solve all this, establish and check that the host name is in FQDN (fully qualified domain name) format (a FQDN is a name that includes the computer name and the domain name associated with that computer):
+
+_# hostnamectl set-hostname ipa.example.com_
+_# hostname -f_
+
 ### Installing the FreeIPA client
 
 ## Functionalities
