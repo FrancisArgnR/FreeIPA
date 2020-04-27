@@ -92,6 +92,9 @@ It has virtually the same capabilities as the command line (CLI), so you can fre
 
 The Web UI's URL access point is https://test.example.com/ipa/ui/ where test.example.com is the name of the FreeIPA server.
 
+![FreeIPAWebUI1](https://access.redhat.com/webassets/avalon/d/Red_Hat_Enterprise_Linux-7-Linux_Domain_Identity_Authentication_and_Policy_Guide-en-US/images/0b67bd0c53b2b26b1d9ce416280f1e83/web_ui_login_screen.png)
+![FreeIPAWebUI2](https://access.redhat.com/webassets/avalon/d/Red_Hat_Enterprise_Linux-7-Linux_Domain_Identity_Authentication_and_Policy_Guide-en-US/images/ec2aee525a75c147a1a9539a4a9280e5/ui-tabs.png)
+
 ### DNS
 
 The FreeIPA integrated DNS service allows the administrator to manage and serve the DNS records in a domain. Once the client registers with the domain, it uses the DNS to locate the servers and services within the domain. The DNS component in FreeIPA is optional and the user can choose to manage all DNS records manually or through another DNS server. The DNS integration is based on the bind-dyndb-ldap project, which enhances the BIND name server to be able to use the LDAP instance of the FreeIPA server as a data backend (data is stored in the cn=dns entry, using the schema defined by bind-dyndb-ldap).
