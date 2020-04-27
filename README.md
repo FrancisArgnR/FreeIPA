@@ -42,6 +42,11 @@ FreeIPA is built on open source components and well known standard protocols. It
 
 From a time perspective, FreeIPA releases are linked to the Fedora release program, with the current version being the 4th (4.7).
 
+### Key concepts
+
+- __Domain__. The domain consists of a group of machines that share the same configuration, policies and identity stores (includes both servers and clients). These shared properties allow the machines in the domain to be aware of each other and operate together.
+- __Realm__. The realm refers to a network used by Kerberos, composed of one or more KDCs and a potentially large number of clients.
+
 ## Core technology
 
 The operation of FreeIPA is possible thanks to the integration and combination of different technologies such as Linux (Fedora), 389 Directory Server, MIT Kerberos, NTP, DNS, Web and command line provisioning and administration tools, Dogtag (certificate system), Active Directory Integration or SSSD among others.
@@ -61,8 +66,6 @@ The FreeIPA directory server acts as a back-end where FreeIPA stores all data fo
 Kerberos is an authentication protocol created by MIT that uses symmetric key cryptography to validate users with network services (thus avoiding having to send passwords over the network). Kerberos requires a trusted third party (Key Distribution Center, or KDC) consisting of an Authentication Server (AS) and a Ticket Granting Server (TGS) to authenticate users. 
 
 Kerberos is a cornerstone of a FreeIPA server as it provides authentication services for the entire FreeIPA environment. Just as a Kerberos KDC server reads all user identity information from the Directory Server, FreeIPA implements its own ipa-kdb KDC which reads and writes all required information to the LDAP tree.
-
-Within Kerberos terminology, it is important to note the term __realm__, which refers to a network used by Kerberos, composed of one or more KDCs and a potentially large number of clients.
 
 ### NTP server
 
