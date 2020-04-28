@@ -172,6 +172,32 @@ _# ipa server-del ipa.example.com_
 
 ### Installing the FreeIPA client
 
+On the client, as on the server, the system packages must be updated and the host name must be set in FQDN format. In addition, you must add the address and host name of the freeipa server (as well as your own) in the client's host list.
+
+_# hostnamectl set-hostname client.example.com_
+_# vim '192.168.3.3 ipa.example.com ipa' >> /etc/hosts_ 
+_# vim '192.168.3.30 client.example.com client' >> /etc/hosts_
+
+All ports must also be opened for communication with the server. Once this is done, the Freeipa client can be installed:
+
+_# dnf –y install freeipa-client_
+
+Next, you have to run the FreeIPA client configuration process. During the process, the IPA server name (ipa.example.com) and the domain will be requested among other things, as well as the FreeIPA server username and password in order to enroll the client. This configuration command, just as on the server, can take different parameters in the same call (see _man ipa-client-install_ for details). In this case, the host name has been passed as a parameter and the creation of the user's home is set at the first login.
+
+_# ipa-client-install --hostname=`hostname -f` --mkhomedir_
+
+Once the client has been successfully installed, the following message will appear:
+
+_# Client configuration complete_
+
+The installation script does not remove any previous LDAP and SSSD settings from the _/etc/openldap/ldap.conf_ and _/etc/sssd/sssd.conf_ files. If the settings in these files were previously changed, the script adds the new client settings, but comments on them.
+
+To uninstall the client, the command is executed:
+
+_# ipa-client-install --uninstall_
+
+Uninstalling removes the client from the domain, along with all FreeIPA specific settings for system services.
+
 ## Functionalities
 
 ## FreeIPA update
