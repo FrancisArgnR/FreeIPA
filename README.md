@@ -1,5 +1,3 @@
-*under construction*
-
 ![FreeIPAlogo](https://blog.ichasco.com/wp-content/uploads/2017/01/freeipalogo.png)
 
 ### Table of Contents
@@ -26,6 +24,7 @@
 * [Back-up & Restore](#back-up--restore)
 * [Main FreeIPA files and directories](#main-freeipa-files-and-directories)
 * [Troubleshooting](#troubleshooting)
+* [FreeIPA componets, services and ports](#freeipa-componets,-services-and-ports)
 * [References](#references)
 
 ====================
@@ -463,6 +462,30 @@ It is important to note that you cannot restore a backup to a different host tha
 
 ## Troubleshooting
 
+FreeIPA is composed of a large number of components that can generate an error in certain circumstances.
+
+To try to solve basic problems you can investigate errors in the execution of the ipa utility. There are two basic utilities for this purpose:
+- Adding the -verbose (-v) option to the command will show the debugging information. <br>
+- Adding the -vv option to the command will show the response and the JSON request. <br>
+
+But tackling more complex problems requires other, more advanced strategies. The following link describes the general steps for determining the root cause of a problem, for example, by consulting logs and service states: <br>
+https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/linux_domain_identity_authentication_and_policy_guide/trouble-general <br>
+
+The following links investigate kinit and Web UI authentication issues: <br>
+https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/linux_domain_identity_authentication_and_policy_guide/trouble-gen-kinit-auth <br>
+https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/linux_domain_identity_authentication_and_policy_guide/trouble-gen-ui-auth
+<br>
+
+Another error that can often occur is the failure of some service at startup. The following link tries to solve this: <br>
+https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/linux_domain_identity_authentication_and_policy_guide/trouble-gen-service<br>
+
+If this has not been sufficient, and more specific problems need to be solved, the steps outlined in: <br>
+https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/linux_domain_identity_authentication_and_policy_guide/trouble-specific<br>
+
+## FreeIPA componets, services and ports
+
+https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/linux_domain_identity_authentication_and_policy_guide/ports <br>
+
 ## References
 
 #### Main FreeIPA manuals
@@ -488,4 +511,7 @@ https://www.server-world.info/en/note?os=Fedora_31&p=freeipa&f=3 <br>
 
 https://www.mankier.com/1/ipa-server-install <br>
 https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/linux_domain_identity_authentication_and_policy_guide/managing-users-permissions <br>
+https://web.mit.edu/kerberos/krb5-1.12/doc/admin/conf_files/krb5_conf.html <br>
+https://linux.die.net/man/5/krb5.conf <br>
+
 
