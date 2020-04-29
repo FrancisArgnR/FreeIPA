@@ -273,6 +273,40 @@ _# ipa domainlevel-get_
 
 ### Advanced Management
 
+By default, only the administrator user can manage the lifecycle of the user and deactivate or activate the accounts. But FreeIPA also contains an option that allows a non-admin user to acquire certain permissions that are not assigned to them. Among the privileges related to user account management included in FreeIPA we can highlight among others modifying users and resetting passwords, or user management. For a non-administrator user to acquire administrator privileges, the following steps must be followed:
+
+Create a new role:
+
+_# ipa role-add --desc "Description" "Role Name"_
+
+To this new role, the permissions you want to grant are added:
+
+_# ipa role-add-privilege "Role Name" --privileges=" User Administrators"_
+
+To ensure that the role has been created correctly and has been assigned the privileges it can be executed:
+
+_# ipa role-show "Role Name"_
+
+Grant a non-administrator user the role with the privileges:
+
+_# ipa role-add-member "Role Name" --users=stage_user_admin_
+
+Another functionality offered by FreeIPA is its Web UI. All IPA tasks can be done in the web interface in addition to the ipa command line tool. To access the administration panel, use the URL https://ipa.example.com/ where ipa.example.com is the hostname of the FreeIPA server. In case you want to log-in as administrator, the web access username is admin and the password is the one provided in the configuration step for the admin user. 
+
+But this is in the case of running from the same host and having a browser installed on it, but what about the case where the access is remote from outside the network and has to be passed from a head node? In this case the following steps must be followed:
+
+1st: install firefox in the head server from where we are going to access:
+
+_# sudo dnf install firefox_
+
+2nd: access with ssh -X to the head server 
+
+_# ssh -X root@server.ugr.es_
+				
+3rd: launch the web from the FreeIPA server
+
+_# firefox https://ipa.example.com/ipa/ui/ &_
+
 
 ## FreeIPA update
 
