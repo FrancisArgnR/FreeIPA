@@ -24,6 +24,7 @@
 * [Replication](#replication)
 * [Migration](#migration)
 * [Back-up & Restore](#back-up--restore)
+* [Main FreeIPA files and directories](#main-freeipa-files-and-directories)
 * [Troubleshooting](#troubleshooting)
 * [References](#references)
 
@@ -301,7 +302,7 @@ _# sudo dnf install firefox_
 
 2nd: access with ssh -X to the head server 
 
-_# ssh -X root@server.ugr.es_
+_# ssh -X root@head.server.es_
 				
 3rd: launch the web from the FreeIPA server
 
@@ -319,9 +320,30 @@ It is important to make sure before you start that you have enough redundancy in
 
 ## Replication
 
+A FreeIPA server can be replicated by cloning the existing configuration. Servers and their replicas share an identical configuration, since the replica installation process copies the configuration of the existing server and installs the replica based on that configuration. Maintaining multiple replicas is one of the best practices.
+
+![Replica0](https://access.redhat.com/webassets/avalon/d/Red_Hat_Enterprise_Linux-7-Linux_Domain_Identity_Authentication_and_Policy_Guide-en-US/images/f0355d1ae94f1534d49a0f4ba8f4d004/ipa-replica.png)
+
+Data stored on a FreeIPA server is replicated based on replication agreements. This means that two servers with a replication agreement share their data (multi-master). Replication agreements are always bilateral: data is replicated from the first replica to the other, as well as from the other replica to the first. When a replication agreement is configured, topology suffixes of the same type are also shared.  It is advisable to set up at least two agreements per replica, but no more than four. 
+
+![Replica1](https://access.redhat.com/webassets/avalon/d/Red_Hat_Enterprise_Linux-7-Linux_Domain_Identity_Authentication_and_Policy_Guide-en-US/images/feeaec82a9000fba3404cdcd616407a6/replica_recommendations_three.png)
+
+The installation requirements for the replica are the same as for the main server, while the replica must run on the same version of Linux and FreeIPA as the original. In addition, TCP port 22 on the master server should be kept open during the mirror's configuration process. This port is required in order to use SSH to connect to that server. When a new replica is configured, the installer automatically creates Service Resource Records (SRV) in the DNS, allowing customers to automatically discover the replica and its services.
+
+The replica can be installed on a client or on a machine that does not yet belong to the domain. To install the replica on a client, you must ensure that the client is authorized to be promoted. To do this, you must log-in as admin before installing the replica with the command (or pass those credentials as parameters):
+
+_# ipa-replica-install_ <br>
+_# ipa-replica-install --main admin --admin-password admin_password_
+
+To install the replica on a non-domain machine, the above command first registers the machine as a client and then installs the replica components.   
+
+Checking that the replica works is as simple as creating a user on one server, and proving on the other that the user has been created.
+
 ## Migration
 
 ## Back-up & Restore
+
+## Main FreeIPA files and directories
 
 ## Troubleshooting
 
