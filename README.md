@@ -24,7 +24,7 @@
 * [Back-up & Restore](#back-up--restore)
 * [Main FreeIPA files and directories](#main-freeipa-files-and-directories)
 * [Troubleshooting](#troubleshooting)
-* [FreeIPA componets, services and ports](#freeipa-componets,-services-and-ports)
+* [FreeIPA components, services and ports](#freeipa-components-services-and-ports)
 * [References](#references)
 
 ====================
@@ -482,7 +482,7 @@ https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/li
 If this has not been sufficient, and more specific problems need to be solved, the steps outlined in: <br>
 https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/linux_domain_identity_authentication_and_policy_guide/trouble-specific<br>
 
-## FreeIPA componets, services and ports
+## FreeIPA components, services and ports
 
 https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/linux_domain_identity_authentication_and_policy_guide/ports <br>
 
