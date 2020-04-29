@@ -366,6 +366,31 @@ https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/li
 
 ## Back-up & Restore
 
+FreeIPA provides a solution to manually back-up and restore the system. FreeIPA performs backups, in which the system creates a directory containing information about your configuration. This directory can then be used to restore the original configuration.
+
+FreeIPA provides 2 back-up options: a) full server back-up, where a backup of all files on the server is created, and b) data back-up only, where only one backup of the LDAP data and the change log is created. By default, FreeIPA stores the backups created in the _/var/lib/ipa/backup/_ directory.
+
+The following respective commands are used to create a backup of the FreeIPA server, both complete and data only:
+
+_# ipa-backup_ <br>
+_# ipa-backup --data_ <br>
+
+As a preliminary step to restoring a server, it is recommended to uninstall it before performing a complete restoration of the server. Once this is done, a server is restored with the following command:
+
+_# ipa-restore /var/lib/ipa/backup/_
+
+To avoid authentication problems on a master, the SSSD cache must be cleared after a restore:
+
+_# systemctl stop sssd_ <br>
+_# find /var/lib/sss/ ! -type d | xargs rm -f_ <br>
+_# systemctl start sssd_ <br>
+
+Once a server is restored it becomes the only source of information for FreeIPA, and so the other master servers are rebooted from the restored server. 
+
+Any data created after the last backup is lost. If possible, always rebuild the lost server by reinstalling it as a replica.
+
+It is important to note that you cannot restore a backup to a different host than the one on which the backup was originally created.
+
 ## Main FreeIPA files and directories
 
 ## Troubleshooting
