@@ -393,6 +393,11 @@ It is important to note that you cannot restore a backup to a different host tha
 
 ## Main FreeIPA files and directories
 
+### Server/client configuration files and directories
+
+- /etc/ipa -> FreeIPA main configuration directory
+	- /etc/ipa/default.conf -> FreeIPA main configuration file. This is common between the server and the clients. It is read when servers and clients are started and when the user uses the ipa utility. The [global] section is mandatory and is the only one used. An example of a default configuration file is:
+
 ## Troubleshooting
 
 ## References
