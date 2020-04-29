@@ -421,6 +421,22 @@ It is important to note that you cannot restore a backup to a different host tha
 
 ### Kerberos files and directories
 
+- _/etc/krb5.conf_ -> Kerberos service configuration file. It contains Kerberos configuration information including: the locations of the KDCs and management servers for the realms, the defaults for the current realm and for Kerberos applications, and the host name assignments in the Kerberos realms. Within the krb5.conf file, the following sections can be highlighted: <br>
+	_[libdefaults]_ -> Settings used by Kerberos <br>
+	_[realms]_ -> Contact information and kingdom-specific settings <br>
+	_[domain_realm]_ -> The names of the map servers of the Kerberos kingdoms <br>
+
+### 389 Directory Server files and directories
+
+- _/etc/dirsrv/slapd-REALM_NAME/_ -> File with the configuration and schema files associated with the Directory Server instance. <br>
+- _/var/lib/dirsrv/slapd-REALM_NAME/_ -> Database associated with the Directory Server instance used by FreeIPA. <br>
+- _/etc/sysconfig/dirsrv_ -> Specific configuration of the _dirsrv_ system service. <br>
+
+### Web UI files and directories
+
+- _/etc/httpd/conf.d/ipa.conf_ -> Configuration file used by the Apache host for the Web UI application. <br>
+- _/usr/share/ipa/_ -> The directory of all HTML files, scripts and style sheets used by the web user interface. <br>
+
 ## Troubleshooting
 
 ## References
