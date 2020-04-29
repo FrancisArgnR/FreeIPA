@@ -341,6 +341,29 @@ Checking that the replica works is as simple as creating a user on one server, a
 
 ## Migration
 
+It is possible that FreeIPA has to be migrated, either on the same platform or on the same or different OS. This migration can be done from NIS to FreeIPA, from LDAP to FreeIPA, or from FreeIPA to FreeIPA.
+
+It may be the case that you want to start a new FreeIPA deployment and cannot simply create a replica, since for example the realm is now different.  In this case you have to do a new installation of FreeIPA and migrate the data. Users and groups can be migrated using the migrate-ds command. To do this, just make sure that the FreeIPA Kerberos related attributes are not migrated, as they have to be generated again by the new FreeIPA server along with its configuration and keys. The migration command does not migrate private user groups, and an example would be as follows:
+
+_# ipa migrate-ds --bind-dn="cn=Directory Manager" --user-container=cn=users,cn=accounts --group-container=cn=groups,cn=accounts --group-objectclass=posixgroup --user-ignore-attribute={krbPrincipalName,krbextradata,krblastfailedauth,krblastpwdchange,krblastsuccessfulauth,krbloginfailedcount,krbpasswordexpiration,krbticketflags,krbpwdpolicyreference,mepManagedEntry} --user-ignore-objectclass=mepOriginEntry --with-compat ldap://migrated.freeipa.server.test_
+
+At other times FreeIPA may not be able to be upgraded due to OS issues, and therefore you may want to migrate FreeIPA to another system. To do this, a replica file must be created on one of the servers:
+
+_# ipa-replica-prepare ipa2.example.com_
+
+And copy the replica file to the new server that will host the FreeIPA server. 
+
+_# scp /var/lib/ipa/replica-info-ipa2.example.com.gpg root@ipa2.example.com:/var/lib/ipa/_
+
+Then you have to install FreeIPA on the destination server:
+
+_# ipa-replica-install /var/lib/ipa/replica-info-ipa2.example.com.gpg_
+
+After that, the new server must have all the services that the original server had, all the users must be recognized, it must have the same authentication key in kerberos, etc. Finally, the old server should be stopped and the FreeIPA service removed.
+
+In the following link you can see in more detail a FreeIPA migration from RHEL6 to RHEL7: <br>
+https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/linux_domain_identity_authentication_and_policy_guide/migrate-6-to-7 <br>
+
 ## Back-up & Restore
 
 ## Main FreeIPA files and directories
