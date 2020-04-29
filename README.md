@@ -437,6 +437,30 @@ It is important to note that you cannot restore a backup to a different host tha
 - _/etc/httpd/conf.d/ipa.conf_ -> Configuration file used by the Apache host for the Web UI application. <br>
 - _/usr/share/ipa/_ -> The directory of all HTML files, scripts and style sheets used by the web user interface. <br>
 
+### Server/Client process logs
+
+- _/var/log/ipaserver-install.log_ -> FreeIPA server installation log file. <br>
+- _/var/log/ipareplica-install.log_ -> FreeIPA server replica installation log file. <br>
+- _/var/log/ipaclient-install.log_ -> FreeIPA client installation log file. <br>
+- _/var/log/sssd/_ -> Log file for SSSD. <br>
+- _~/.ipa/log/cli.log_- > Log file with errors returned by _XML-RPC_ calls and responses from the ipa utility. Created in the main directory of the system user that runs the tool. <br>
+
+### Apache Server Logs (HTTPD)
+
+- _/var/log/httpd/access_log_ -> Standard access log for Apache servers. FreeIPA specific messages are recorded along with Apache messages since the FreeIPA web interface and the _XML-RPC_ command line interface use Apache. <br>
+- _/var/log/httpd/error_log_ -> Same as above but in this case the error is registered. <br>
+
+### Directory Server service Logs
+
+- _/var/log/dirsrv/slapd-REALM_NAME/access_ -> Log containing detailed information about access attempts and operations for the Directory Server instance of the domain. <br>
+- _/var/log/dirsrv/slapd-REALM_NAME/errors_ -> Same as above but in this case the error is registered. <br>
+
+### Kerberos Logs
+
+- _/var/log/krb5kdc.log_ -> Main log of the Kerberos KDC server. <br>
+- _/var/log/kadmind.log_ -> Main log of the Kerberos administration server. <br>
+
+
 ## Troubleshooting
 
 ## References
