@@ -395,29 +395,29 @@ It is important to note that you cannot restore a backup to a different host tha
 
 ### Server/client configuration files and directories
 
-- /etc/ipa -> FreeIPA main configuration directory
-	- /etc/ipa/default.conf -> FreeIPA main configuration file. This is common between the server and the clients. It is read when servers and clients are started and when the user uses the ipa utility. The [global] section is mandatory and is the only one used. An example of a default configuration file is:
-		[global]
-		basedn=dc=example,dc=com
-		realm=EXAMPLE.COM
-		domain=example.com
-		xmlrpc_uri=https://ipa.example.com/ipa/xml
-		ldap_uri=ldapi://%2fvar%2frun%2fslapd-EXAMPLE-COM.socket
-		enable_ra=True
-	The client will search for the FreeIPA server using the value specified by the parameter xmlrpc_uri
-	- /etc/ipa/server.conf (/etc/ipa/cli.conf) -> These files do not initially exist, but can be created in case you need to make global or specific changes to the client or server specific configuration. They will take precedence over the previous one. 
-- /etc/sssd/sssd.conf -> This file contains the configuration of the FreeIPA domain and the services used by SSSD. This file consists of 3 parts a) [domain_type/Domain_Name] with the domain configuration options, b) [sssd] with the general configuration of the SSSD processes and operations. This section lists all domains and all configured system services, c) [service_name] with the configuration options of each system service.  An example of configuration may be as follows:
-	[domain/LOCAL]
-	id_provider = local
-	auth_provider = local
-	access_provider = permit
-	[sssd]
-	domains = LOCAL
-	services = nss
-	config_file_version = 2
-	[nss]
-	filter_groups = root
-	filter_users = root
+- _/etc/ipa_ -> FreeIPA main configuration directory
+	- _/etc/ipa/default.conf_ -> FreeIPA main configuration file. This is common between the server and the clients. It is read when servers and clients are started and when the user uses the ipa utility. The _[global]_ section is mandatory and is the only one used. An example of a default configuration file is:
+		_[global]_ <br>
+		_basedn=dc=example,dc=com_ <br>
+		_realm=EXAMPLE.COM_ <br>
+		_domain=example.com_ <br>
+		_xmlrpc_uri=https://ipa.example.com/ipa/xml_ <br>
+		_ldap_uri=ldapi://%2fvar%2frun%2fslapd-EXAMPLE-COM.socket_ <br>
+		_enable_ra=True_ <br>
+	The client will search for the FreeIPA server using the value specified by the parameter _xmlrpc_uri_
+	- _/etc/ipa/server.conf (/etc/ipa/cli.conf)_ -> These files do not initially exist, but can be created in case you need to make global or specific changes to the client or server specific configuration. They will take precedence over the previous one. 
+- _/etc/sssd/sssd.conf_ -> This file contains the configuration of the FreeIPA domain and the services used by SSSD. This file consists of 3 parts a) _[domain_type/Domain_Name]_ with the domain configuration options, b) _[sssd]_ with the general configuration of the SSSD processes and operations. This section lists all domains and all configured system services, c) _[service_name]_ with the configuration options of each system service.  An example of configuration may be as follows:
+	_[domain/LOCAL]_ <br>
+	_id_provider = local_ <br>
+	_auth_provider = local_ <br>
+	_access_provider = permit_ <br>
+	_[sssd]_ <br>
+	_domains = LOCAL_ <br>
+	_services = nss_ <br>
+	_config_file_version = 2_ <br>
+	_[nss]_ <br>
+	_filter_groups = root_ <br>
+	_filter_users = root_ <br>
 
 ### Kerberos files and directories
 
