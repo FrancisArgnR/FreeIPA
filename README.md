@@ -200,6 +200,80 @@ Uninstalling removes the client from the domain, along with all FreeIPA specific
 
 ## Functionalities
 
+### Basic commands
+
+To be able to perform any administrative task in FreeIPA you need to authenticate yourself on the server. During the configuration process two users were requested to be created, the first of which, Directory Manager, is the super-user to be used for low-level tasks. For normal administrative activity, an account manager, Admin, has been created. To authenticate as an admin you have to run:
+
+_# kinit admin_ <br>
+_Password for admin@EXAMPLE.COM:_
+
+The password established during the installation will be requested. As a result of this operation you will get the Kerberos ticket. This also serves to test whether the installation was successful and therefore it is possible to start authentication with the server. In addition, you can be asked for information on the validity of the logged-in session:
+
+_# klist_ <br>
+_Ticket cache: KEYRING:persistent:0:0_ <br>
+_Default principal: admin@EXAMPLE.COM_ <br>
+_Valid starting     Expires            Service principal_ <br>
+_06/29/18 22:52:40  06/30/18 22:52:36  krbtgt/EXAMPLE.COM@EXAMPLE.COM_ <br>
+
+FreeIPA provides a manual from which the functionalities of the main command ipa are shown. 
+
+_# man ipa_
+
+Some of the most common administration tasks that can be performed in FreeIPA are shown below:
+
+Check the status of the FreeIPA service:
+
+_# ipactl status_
+
+Start, stop and restart the FreeIPA service:
+
+_# ipactl start_ <br>
+_# ipactl stop_ <br>
+_# ipactl restart_ <br>
+
+Show a user:
+
+_# ipa user-show USER_
+
+Search for users:
+
+_# ipa user-find USER_
+
+List all users:
+
+_# ipa user-find --all > users.txt_
+
+Add a new user (the user can log-in using: _# ssh user@freeipahost_)(at the first login you will be asked to change the password):
+
+_# ipa user-add NOMBRE_USUARIO --first=NOMBRE --last=APELLIDOS -uid=UID --gidnumber=GID --email=EMAIL@EMAIL.COM --shell=/bin/bash --password_
+
+Delete a user:
+
+_# ipa user-del USER_NAME_
+
+Change a user's password:
+
+_# ipa user-mod USER -password_
+
+Show the suffixes of the FreeIPA topology:
+
+_# ipa topologysuffix-find_
+
+Show all topology servers along with the services they offer:
+
+_# ipa config-show_
+
+Display a list of features enabled on a particular server.
+
+_# ipa server-show_
+
+Show the current domain level. The domain level indicates what operations and capabilities are available in FreeIPA (domains can be 0 or 1): 
+
+_# ipa domainlevel-get_
+
+### Advanced Management
+
+
 ## FreeIPA update
 
 When there is a new updated version of the FreeIPA server to which you want to upgrade, in most cases it is possible to simply upgrade the underlying operating system and FreeIPA software. The FreeIPA upgrade procedure is designed to upgrade the FreeIPA Directory Server instance and also other configured services when needed and does not need to be shut down beforehand. To upgrade an existing installation of FreeIPA (from version 3.3.0 onwards) run the following command:
