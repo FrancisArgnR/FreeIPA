@@ -192,11 +192,17 @@ _# Client configuration complete_
 
 The installation script does not remove any previous LDAP and SSSD settings from the _/etc/openldap/ldap.conf_ and _/etc/sssd/sssd.conf_ files. If the settings in these files were previously changed, the script adds the new client settings, but comments on them.
 
-To uninstall the client, the command is executed:
+To just uninstall the client, the command is executed:
 
 _# ipa-client-install --uninstall_
 
 Uninstalling removes the client from the domain, along with all FreeIPA specific settings for system services.
+
+(On Ubuntu):
+
+_$ sudo apt-get remove freeipa-client_ <br>
+_$ sudo apt-get remove --auto-remove freeipa-client_ <br>
+_$ sudo apt-get purge freeipa-client_ <br>
 
 ## Functionalities
 
